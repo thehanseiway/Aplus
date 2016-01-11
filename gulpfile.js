@@ -20,7 +20,7 @@ var COMPATIBILITY = ['last 2 versions', 'ie >= 9'];
 var PATHS = {
   assets: [
     'src/assets/**/*',
-    '!src/assets/{img,js,scss}/**/*'
+    '!src/assets/{!img,js,scss}/**/*'
   ],
   sass: [
     'bower_components/foundation-sites/scss',
@@ -31,27 +31,8 @@ var PATHS = {
     'bower_components/what-input/what-input.js',
     'bower_components/foundation-sites/js/foundation.core.js',
     'bower_components/foundation-sites/js/foundation.util.*.js',
-    // Paths to individual JS components defined below
-    'bower_components/foundation-sites/js/foundation.abide.js',
-    'bower_components/foundation-sites/js/foundation.accordion.js',
-    'bower_components/foundation-sites/js/foundation.accordionMenu.js',
-    'bower_components/foundation-sites/js/foundation.drilldown.js',
-    'bower_components/foundation-sites/js/foundation.dropdown.js',
-    'bower_components/foundation-sites/js/foundation.dropdownMenu.js',
-    'bower_components/foundation-sites/js/foundation.equalizer.js',
-    'bower_components/foundation-sites/js/foundation.interchange.js',
-    'bower_components/foundation-sites/js/foundation.magellan.js',
-    'bower_components/foundation-sites/js/foundation.offcanvas.js',
-    'bower_components/foundation-sites/js/foundation.orbit.js',
-    'bower_components/foundation-sites/js/foundation.responsiveMenu.js',
-    'bower_components/foundation-sites/js/foundation.responsiveToggle.js',
-    'bower_components/foundation-sites/js/foundation.reveal.js',
-    'bower_components/foundation-sites/js/foundation.slider.js',
-    'bower_components/foundation-sites/js/foundation.sticky.js',
-    'bower_components/foundation-sites/js/foundation.tabs.js',
-    'bower_components/foundation-sites/js/foundation.toggler.js',
-    'bower_components/foundation-sites/js/foundation.tooltip.js',
-    'src/assets/js/**/!(app).js',
+    'bower_components/foundation-sites/js/foundation.*.js',
+    'src/assets/js/**/*.js',
     'src/assets/js/app.js'
   ]
 };
@@ -62,23 +43,16 @@ gulp.task('clean', function(done) {
   rimraf('dist', done);
 });
 
-// Browser Sync wrapper task 
-// allows for proper injection of css files
-gulp.task('reload', function(cb) {
-  browser.reload();
-  cb();
-});
-
 // Copy files out of the assets folder
 // This task skips over the "img", "js", and "scss" folders, which are parsed separately
 gulp.task('copy', function() {
-  return gulp.src(PATHS.assets)
+  gulp.src(PATHS.assets)
     .pipe(gulp.dest('dist/assets'));
 });
 
 // Copy page templates into finished HTML files
 gulp.task('pages', function() {
-  return gulp.src('src/pages/**/*.{html,hbs,handlebars}')
+  gulp.src('src/pages/**/*.{html,hbs,handlebars}')
     .pipe(panini({
       root: 'src/pages/',
       layouts: 'src/layouts/',
@@ -91,7 +65,8 @@ gulp.task('pages', function() {
 
 gulp.task('pages:reset', function(cb) {
   panini.refresh();
-  gulp.watch('pages', cb);
+  gulp.run('pages');
+  cb();
 });
 
 gulp.task('styleguide', function(cb) {
@@ -126,8 +101,7 @@ gulp.task('sass', function() {
     .pipe(uncss)
     .pipe(minifycss)
     .pipe($.if(!isProduction, $.sourcemaps.write()))
-    .pipe(gulp.dest('dist/assets/css'))
-    .pipe(browser.reload({stream: true}));
+    .pipe(gulp.dest('dist/assets/css'));
 });
 
 // Combine JavaScript into one file
@@ -172,11 +146,11 @@ gulp.task('server', ['build'], function() {
 
 // Build the site, run the server, and watch for file changes
 gulp.task('default', ['build', 'server'], function() {
-  gulp.watch(PATHS.assets, ['copy', 'reload']);
-  gulp.watch(['src/pages/**/*.html'], ['pages', 'reload']);
-  gulp.watch(['src/{layouts,partials}/**/*.html'], ['pages:reset', 'reload']);
-  gulp.watch(['src/assets/scss/**/*.scss'], ['sass']);
-  gulp.watch(['src/assets/js/**/*.js'], ['javascript', 'reload']);
-  gulp.watch(['src/assets/img/**/*'], ['images', 'reload']);
-  gulp.watch(['src/styleguide/**'], ['styleguide', 'reload']);
+  gulp.watch(PATHS.assets, ['copy', browser.reload]);
+  gulp.watch(['src/pages/**/*.html'], ['pages', browser.reload]);
+  gulp.watch(['src/{layouts,partials}/**/*.html'], ['pages:reset', browser.reload]);
+  gulp.watch(['src/assets/scss/**/*.scss'], ['sass', browser.reload]);
+  gulp.watch(['src/assets/js/**/*.js'], ['javascript', browser.reload]);
+  gulp.watch(['src/assets/img/**/*'], ['images', browser.reload]);
+  gulp.watch(['src/styleguide/**'], ['styleguide', browser.reload]);
 });

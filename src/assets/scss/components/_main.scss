@@ -1,3 +1,42 @@
-body {
-    background-color: white;
+.section-title {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.options {
+    &__text {
+        background: url('../img/check.png') left center no-repeat;
+        display: inline-block;
+        padding: 25px 8.6% 25px 50px;
+        font-size: 24px;
+    }
+    
+    .is-last {
+        padding-right: 0;
+    }
+}
+
+.service {
+    text-align: center;
+    padding: 60px 0 30px;
+    background-color: #f7f5f3;
+
+    p {
+        color:#768588;
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 1.2;
+    }
+
+    &__separator {
+        width: 25px;
+        display: inline-block;
+        margin: 30px 0 5px;
+        border-top: 2px solid #768588;
+    }
+}
+
+.profits {
+    padding: 60px 0 30px;
+
 }

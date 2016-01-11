@@ -2,17 +2,61 @@
     background: url('../img/residential1.jpg') center center no-repeat;
     background-size: cover;
     height: 589px;
-    padding-top: 20px;
+    padding: 20px 15px;
     
+    &__logo {
+        display: block;
+    }
+
     &__phone {
+        font-family: "Roboto";
         color: #fff;
         line-height: 64px;
         font-size: 18px;
+        font-weight: 600;
         
         span {
-            font-family: Helvetica;
             font-size: 25px;
+            font-weight: 900;
+        }
+    }
+
+    &__montreal {
+        margin: 50px auto;
+        text-align: center;
+        float: none;
+        max-width: 588px;
+        border-radius: 22px;
+        background-color: rgba(#f4bb0f, 0.9);
+        padding: 55px 0 0;
+        
+        h2 {
+            margin: 27px 0 50px;
+        }
+
+        button {
+            background-color: transparent;
+            padding: 0 14.3%;
+            border: 2px solid #fff;
+            color:#fff;
+            border-radius: 22px;
+            font-size: 28px;
+            line-height:1.8;
             font-weight: bold;
+
+            &:hover {
+                background-color: transparent;
+            }
+        }
+    }
+
+    &__arrow {
+        padding: 5px 0;
+        img {
+            position: relative;
+            left: 55px;
         }
     }
 }
+
+
