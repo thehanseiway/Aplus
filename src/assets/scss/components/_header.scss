@@ -1,0 +1,18 @@
+.header {
+    background: url('../img/residential1.jpg') center center no-repeat;
+    background-size: cover;
+    height: 589px;
+    padding-top: 20px;
+    
+    &__phone {
+        color: #fff;
+        line-height: 64px;
+        font-size: 18px;
+        
+        span {
+            font-family: Helvetica;
+            font-size: 25px;
+            font-weight: bold;
+        }
+    }
+}
