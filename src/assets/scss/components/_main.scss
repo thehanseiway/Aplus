@@ -8,6 +8,10 @@ section {
     padding: 60px 0 30px;
 }
 
+.logo {
+    display:inline-block;
+}
+
 // ========= Modifiers ========= //
 .send-button {
     background-color: transparent;
@@ -261,7 +265,6 @@ section {
         border-radius: 20px;
         text-align: left;
         position: relative;
-        margin-left: 30px;
     
         @media screen and (max-width: 940px) {
             margin: 0;
@@ -276,6 +279,8 @@ section {
         }
 
         &.is-right {
+            margin-left: 30px;
+
             &::before {
                 border-top: 10px solid transparent;
                 border-bottom: 10px solid transparent;
@@ -304,6 +309,8 @@ section {
         }
 
         &.is-left {
+            margin-right: 30px;
+
             &::before {
                 border-top: 10px solid transparent;
                 border-bottom: 10px solid transparent;
@@ -333,5 +340,77 @@ section {
 
     .columns {
         margin-bottom: 25px;
+    }
+}
+
+// ========= Footer ========= //
+.footer {
+    padding: 10px 0 30px;
+    background: url('../img/footer-bg.jpg') center center no-repeat;
+    background-size: cover;
+    text-align: center;
+    position: relative;
+    
+    p {
+        color: #fff;
+        margin-bottom: 0px;
+        white-space: nowrap;
+        font-weight: bold;
+    }
+    &__logo {
+        float: left;
+
+        .logo {
+            margin-top: 10px;
+        }
+
+        @media screen and (max-width: 930px) {
+            float: none;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    }
+
+    &__contact {
+        float: right;
+        text-align: right;
+
+        &__phone {
+            background: url('../img/marker.png') center center no-repeat;
+            font-size: 24px;
+        }
+
+        @media screen and (max-width: 930px) {
+            float: none;
+            text-align: center;
+            margin-top: 20px;
+
+            &__phone {
+                max-width: 208px;
+                margin: auto;
+                background-position: left center;
+            }
+        }
+    }
+  
+    &__button {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 54px;
+        margin: auto;
+        max-width: 220px;
+        
+        @media screen and (max-width: 930px) {
+            position: static;
+            display: block;
+        }
+
+        &:hover {
+            color: #fff;
+        }
     }
 }
