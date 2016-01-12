@@ -281,6 +281,10 @@ section {
         &.is-right {
             margin-left: 30px;
 
+            @media screen and (max-width: 940px) {
+                margin-left: 0;
+            }
+
             &::before {
                 border-top: 10px solid transparent;
                 border-bottom: 10px solid transparent;
@@ -310,6 +314,10 @@ section {
 
         &.is-left {
             margin-right: 30px;
+
+            @media screen and (max-width: 940px) {
+                margin-right: 0;
+            }
 
             &::before {
                 border-top: 10px solid transparent;
