@@ -8,8 +8,72 @@ section {
     padding: 60px 0 30px;
 }
 
+select,
+input {
+    line-height: 45px;
+    min-height: 45px;
+    width: 100%;
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 16px;
+    color: #768588;
+    padding: 0 15px;
+    border-radius: 20px;
+    font-weight: normal;
+    border:0;
+    margin-bottom: 10px;
+    font-family: Verdana;
+
+    &:focus {
+        border:0;
+        box-shadow: inset 0 1px 1px rgba(83, 167, 236, 0.075), 0 0 8px rgba(83, 167, 236, 0.8);
+    }
+
+    @media screen and (max-width: 1024px) {
+        display: block;
+        margin: 0 auto 15px;
+    }
+}
+
+label {
+    font-size: 20px;
+}
+
+#free-quote {
+    padding: 30px 10px;
+    background-color: #ffc600;
+    max-height: none !important;
+
+    @media screen and (max-width:768px) {
+        top: 50px !important;
+
+        label {
+            font-size: 14px;
+        }
+        
+        select,
+        input {
+            height: 35px;
+        }
+    }
+}
+
 .logo {
     display:inline-block;
+}
+
+body.is-reveal-open {
+    overflow: auto;
+}
+
+.reveal-overlay {
+    overflow-y: auto;
+}
+
+// Motion ui
+%mui-defaults {
+  transition-duration: map-get($motion-ui-speeds, fast);
+  transition-timing-function: map-get($motion-ui-easings, ease-in);
 }
 
 // ========= Modifiers ========= //
@@ -41,7 +105,7 @@ section {
     &__text {
         background: url('../img/check.png') left center no-repeat;
         display: inline-block;
-        padding: 25px 8.6% 25px 50px;
+        padding: 25px 5.5% 25px 50px;
         font-size: 24px;
 
         @media screen and (max-width: 930px) {
@@ -135,6 +199,7 @@ section {
 .estimation {
     background-color: #f4bb0f;
     color: #fff;
+    text-align: center;
 
     p {
         font-size: 18px;
@@ -144,46 +209,19 @@ section {
         margin-bottom: 15px;
     }
 
-    input {
-        line-height: 54px;
-        min-height: 54px;
-        width: 100%;
-        display: inline-block;
-        margin-right: 10px;
-        max-width: 301px;
-        font-size: 16px;
-        color: #768588;
-        padding: 16px;
-        border-radius: 20px;
-        font-weight: normal;
-        border:0;
-        margin-bottom: 10px;
-        font-family: Verdana;
-        box-shadow: none;
-
-        @media screen and (max-width: 1024px) {
-            display: block;
-            margin: 0 auto 15px;
-        }
-    }
-
     &__button {
         display: inline-block;
         margin-top: 20px;
+        margin-bottom: 20px;
         position: relative;
         max-width: 300px;
         width: 100%;
 
         &__arrow {
-            position: absolute;
-            bottom: 125%;
-            right: 0;
 
-            @media screen and (max-width: 1024px) {
                 position: static;
                 text-align: right;
                 padding-bottom: 10px;
-            }
         }
     }
 
@@ -353,7 +391,7 @@ section {
 
 // ========= Footer ========= //
 .footer {
-    padding: 10px 0 30px;
+    padding: 15px 0 30px;
     background: url('../img/footer-bg.jpg') center center no-repeat;
     background-size: cover;
     text-align: center;
@@ -369,7 +407,7 @@ section {
         float: left;
 
         .logo {
-            margin-top: 10px;
+            margin-top: 18px;
         }
 
         @media screen and (max-width: 930px) {
@@ -382,6 +420,7 @@ section {
     &__contact {
         float: right;
         text-align: right;
+        margin-top: 5px;
 
         &__phone {
             background: url('../img/marker.png') center center no-repeat;

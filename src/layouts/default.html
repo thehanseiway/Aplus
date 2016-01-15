@@ -7,8 +7,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A PLUS</title>
+    <link rel="icon" href="{{root}}assets/img/favicon.png" />
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="bower_components/foundation-datepicker/css/foundation-datepicker.min.css">
     <link rel="stylesheet" href="{{root}}assets/css/app.css">
   </head>
   <body>
@@ -18,7 +20,37 @@
     {{> body}}
 
     {{> footer}}
+  
+  <!-- Request success -->
+    <div class="small reveal text-center" id="request" data-reveal data-close-on-click="true" data-animation-in="fade-in" data-animation-out="fade-out" data-v-offset="0">
+        <button class="close-button" data-close aria-label="Close reveal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <p class="success">Nous avons reçu votre demande!<br>
+        Nous reviendrons vers vous bientôt<br>
+        Merci pour votre temps précieux</p>
+        <button class="button success large" data-close aria-label="Close reveal" type="button">
+            <span aria-hidden="true">Close</span>
+        </button>
+    </div>
+    <!-- /Request success -->
 
+    <script src="bower_components/foundation-datepicker/js/foundation-datepicker.min.js"></script>
     <script src="{{root}}assets/js/app.js"></script>
+    
+    <?php if ($_GET['send'] === 'success') { ?>
+
+    <script>
+        $(document).ready(function(){
+            var popup = new Foundation.Reveal($('#request'));
+            popup.open();  
+
+            $('#date').fdatepicker({
+              language: 'fr'
+            });
+        });
+    </script>
+
+    <?php } ?>
   </body>
 </html>

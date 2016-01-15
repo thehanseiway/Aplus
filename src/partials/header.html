@@ -17,7 +17,7 @@
 
             <h2>75$/heure</h2>
 
-            <button class="send-button">DEVIS GRATUIT</button>
+            <button data-toggle="free-quote" class="send-button">DEVIS GRATUIT</button>
             <div class="header__arrow">
                 <img src="{{root}}assets/img/arrow.png" alt="Arrow">
             </div>
@@ -25,3 +25,50 @@
     </div> 
 </header>
 <!-- /Header -->
+
+<!-- Free quote form -->
+    <div class="small reveal" id="free-quote" data-reveal data-close-on-click="true" data-animation-in="slide-in-down" data-animation-out="slide-out-up">
+      
+        <form method="POST" id="contact_form" role="form" action="/send_contact_email.php">
+                <div class="row">
+                    <div class="small-12 columns">
+                        <div>
+                            <input type="text" name="name" value="" placeholder="Nom" id="name">
+                        </div>
+                        <div>
+                            <input type="email" name="email" value="" placeholder="Email" id="email">
+                        </div>
+                        <div>
+                            <input type="text" name="phone" value="" placeholder="Telephone" id="phone" required>
+                        </div>
+                    </div>
+                    <div class="small-12 columns">
+                        <div>
+                            <input type="text" name="date" value="" placeholder="Date du déménagement" id="date">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-12 columns">
+                        <div>
+                            <input type="text" placeholder="Adresse d'origine" name="original_address" value="" id="original_address">
+                        </div>
+                    </div>
+                    <div class="small-12 columns">
+                        <div>
+                            <input type="text" placeholder="Adresse de destination" name="destination_address" value="" id="destination_address">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-12 columns text-center">
+                        <button class="send-button" id="btn_send">Envoyer le formulaire</button>
+                    </div>
+                </div>
+        </form>
+    
+        <button class="close-button" data-close aria-label="Close reveal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <!-- /Free quote form -->
